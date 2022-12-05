@@ -42,8 +42,16 @@ write.csv(penguins_clean_data, "clean_data/penguins_clean_data.csv")
 ##visualize the data 
 head(penguins_clean_data)
 
+#remove the values which are NAs for flipper length and NA for body mass by creating a new object
+subset_penguin_data <- penguins_clean_data  %>%
+drop_na(flipper_length_mm) %>%
+drop_na(body_mass_g)
+
+#visualize the new data frame
+head(subset_penguin_data)
+
 ##fit a linear model to the cleaned data using flipper length as the response variable and body mass as the explanatory variable
-penguins_model1 <- lm(flipper_length_mm ~ body_mass_g, penguins_clean_data) 
+penguins_model1 <- lm(flipper_length_mm ~ body_mass_g, subset_penguin_data) 
 
 #summary of the model produced
 summary(penguins_model1)
@@ -51,7 +59,7 @@ summary(penguins_model1)
 #Run an ANOVA for the model
 anova(penguins_model1)
 
-# R squared of 0.759 qnd P-value of less than 0.05 indicates that there is a significant relationship between the two variables
+# R squared of 0.758 qnd P-value of less than 0.05 indicates that there is a significant relationship between the two variables
 # and indicates that can use body mass to predict flipper length 
 
 ##Investigate this trend in Adelie Penguins
@@ -59,7 +67,7 @@ adelie <- filter(penguins, species =="Adelie")
 adelie_model1 <- lm(flipper_length_mm ~ body_mass_g, adelie)
 summary(adelie_model1)
 anova(adelie_model1)
-#R squared value 0.2192 and P value of less than 0.05 indicates that there is a significant relationship between the two variables
+#R squared value 0.214 and P value of less than 0.05 indicates that there is a significant relationship between the two variables
 #indicates that body mass can be used to predict flipper length in Adelie penguins
 
 #Chinstrap Penguins
@@ -67,10 +75,10 @@ chinstrap <- filter(penguins, species =="Chinstrap")
 chinstrap_model1 <- lm(flipper_length_mm ~ body_mass_g, chinstrap)
 summary(chinstrap_model1)
 anova(chinstrap_model1)
-#R2 value for regression is 0.4116 and P value of less than 0.05 indicates that there is a significant relationship between the two variables
+#R2 value for regression is 0.4027 and P value of less than 0.05 indicates that there is a significant relationship between the two variables
 #indicates that body mass can be used to predict flipper length in Chinstrap penguins
 
-#Gentoo penguins
+#Gentoo Penguins
 gentoo <- filter(penguins, species =="Gentoo")
 gentoo_model1 <- lm(flipper_length_mm ~ body_mass_g, gentoo)
 summary(gentoo_model1)
@@ -80,8 +88,8 @@ anova(gentoo_model1)
 
 ### STEP 5) Creating a figure for the data
 ##Plot the flipper length as a linear model of body mass for all the species
-plot_bodymass_flipper_figure <- function(penguins_clean_data){
-  penguins_clean_data %>%  
+plot_bodymass_flipper_figure <- function(subset_penguin_data){
+  subset_penguin_data %>%  
     ggplot(aes(x = body_mass_g,
                y = flipper_length_mm,
                colour = species,
@@ -113,4 +121,5 @@ ggsave(filename = "result_bodymass_flipper_figure.png",
        plot = bodymass_flipper_figure,
        height = 24, width = 24,
        units = "cm")
+
 
