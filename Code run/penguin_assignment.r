@@ -86,6 +86,8 @@ anova(gentoo_model1)
 #R2 value of 0.4896 and P value of less than 0.05 indicates  that there is a significant relationship between the two variables
 #indicates that body mass can be used to predict flipper length in Gentoo penguins
 
+#these results therefore indicate that body mass can be used to predict flipper length in Gentoo, Adelie, and Chinstrap penguins
+
 ### STEP 5) Creating a figure for the data
 ##Plot the flipper length as a linear model of body mass for all the species
 plot_bodymass_flipper_figure <- function(subset_penguin_data){
