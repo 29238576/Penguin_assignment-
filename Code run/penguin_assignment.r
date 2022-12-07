@@ -60,7 +60,7 @@ summary(penguins_model1)
 anova(penguins_model1)
 
 # R squared of 0.758 qnd P-value of less than 0.05 indicates that there is a significant relationship between the two variables
-# and indicates that can use body mass to predict flipper length 
+# and indicates that can use body mass to predict flipper length. Since as body mass increases so does flipper length.
 
 ##Investigate this trend in Adelie Penguins
 adelie <- filter(penguins, species =="Adelie")
@@ -68,7 +68,7 @@ adelie_model1 <- lm(flipper_length_mm ~ body_mass_g, adelie)
 summary(adelie_model1)
 anova(adelie_model1)
 #R squared value 0.214 and P value of less than 0.05 indicates that there is a significant relationship between the two variables
-#indicates that body mass can be used to predict flipper length in Adelie penguins
+#indicates that body mass can be used to predict flipper length in Adelie penguins. Since as body mass increases so does flipper length.
 
 #Chinstrap Penguins
 chinstrap <- filter(penguins, species =="Chinstrap")
@@ -76,7 +76,7 @@ chinstrap_model1 <- lm(flipper_length_mm ~ body_mass_g, chinstrap)
 summary(chinstrap_model1)
 anova(chinstrap_model1)
 #R2 value for regression is 0.4027 and P value of less than 0.05 indicates that there is a significant relationship between the two variables
-#indicates that body mass can be used to predict flipper length in Chinstrap penguins
+#indicates that body mass can be used to predict flipper length in Chinstrap penguins. Since as body mass increases so does flipper length.
 
 #Gentoo Penguins
 gentoo <- filter(penguins, species =="Gentoo")
@@ -84,9 +84,9 @@ gentoo_model1 <- lm(flipper_length_mm ~ body_mass_g, gentoo)
 summary(gentoo_model1)
 anova(gentoo_model1)
 #R2 value of 0.4896 and P value of less than 0.05 indicates  that there is a significant relationship between the two variables
-#indicates that body mass can be used to predict flipper length in Gentoo penguins
+#indicates that body mass can be used to predict flipper length in Gentoo penguins. Since as body mass increases so does flipper length.
 
-#these results therefore indicate that body mass can be used to predict flipper length in Gentoo, Adelie, and Chinstrap penguins
+#these results therefore indicate that body mass can be used to predict flipper length in Gentoo, Adelie, and Chinstrap penguins and that flipper length increases as body mass increases. 
 
 ### STEP 5) Creating a figure for the data
 ##Plot the flipper length as a linear model of body mass for all the species
