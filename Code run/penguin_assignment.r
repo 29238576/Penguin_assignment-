@@ -11,6 +11,7 @@ library(palmerpenguins)
 library(ggplot2)
 library(janitor)
 library(dplyr)
+library(tidyr)
 
 ##set working directory 
 setwd("~/Penguins")
